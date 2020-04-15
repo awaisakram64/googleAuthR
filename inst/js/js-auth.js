@@ -13,6 +13,7 @@ function auth() {
     Shiny.onInputChange('%s', token.access_token);
     Shiny.onInputChange('%s', token.token_type);
     Shiny.onInputChange('%s', token.expires_in);
+    Shiny.onInputChange('%s', token.refresh_token);
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
   });
