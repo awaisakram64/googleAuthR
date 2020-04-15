@@ -55,7 +55,8 @@ googleAuth_jsUI <- function(id,
                      approval_prompt_line,
                      ns("js_auth_access_token"),
                      ns("js_auth_token_type"),
-                     ns("js_auth_expires_in"))
+                     ns("js_auth_expires_in"),
+                     ns("js_auth_refresh_token"))
   )
   
 }
@@ -83,7 +84,8 @@ googleAuth_js <- function(input, output, session, message = "Authenticate with y
     
     list(access_token = input$js_auth_access_token,
          token_type = input$js_auth_token_type,
-         expires_in = input$js_auth_expires_in
+         expires_in = input$js_auth_expires_in,
+         refresh_token = input$js_auth_refresh_token
     )
     
   })
@@ -120,7 +122,7 @@ gar_js_getToken <- function(token,
                  credentials = list(access_token = token$access_token,
                                     token_type = token$token_type,
                                     expires_in = token$expires_in,
-                                    refresh_token = NULL),
+                                    refresh_token = token$refresh_token),
                  params = list(scope = scope_list, type = NULL,
                                use_oob = FALSE, as_header = TRUE),
                  cache_path = FALSE)
